@@ -3,7 +3,7 @@ from typing import Any, Mapping, Optional
 
 from telegrambots.custom import (
     CallbackQueryContext,
-    ContextTemplate,
+    Context,
     ContinueWithInfo,
     KeyBuilder,
     MessageContext,
@@ -21,7 +21,7 @@ dp.add_default_exception_handler()
 
 
 def my_continue_with(
-    context: ContextTemplate, user_id: int, message_id: int, **kwargs: Any
+    context: Context[Any], user_id: int, message_id: int, **kwargs: Any
 ):
     keys = (
         KeyBuilder.for_callback_query()
