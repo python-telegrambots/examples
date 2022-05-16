@@ -16,7 +16,7 @@ class Inforamation:
     cat_name: Optional[str] = None
 
 
-bot = TelegramBot("5373053513:AAFjuooGr532lOILaylmG9RjO4XIawLxNzU")
+bot = TelegramBot("BOT_TOKEN")
 dp = bot.dispatcher
 
 
@@ -36,9 +36,11 @@ async def start(context: MessageContext):
 
 @dp.add.handlers.via_decorator.message(mf.text_message, continue_after=["start"])
 async def favorite_color(context: MessageContext):
-    context["info"].favorite_color = context.text
-    await context.reply_text("What's your preferred lunch?")
-    context.continue_with.message_from(context["info"].id, "preferred_lunch")
+    if (info := context.try_get_data("info", Inforamation)) is not None:
+
+        info.favorite_color = context.text
+        await context.reply_text("What's your preferred lunch?")
+        context.continue_with.message_from(info.id, "preferred_lunch")
 
 
 @dp.add.handlers.via_decorator.message(
