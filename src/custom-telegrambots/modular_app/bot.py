@@ -2,7 +2,7 @@ from pathlib import Path
 from telegrambots.custom import TelegramBot
 
 
-bot = TelegramBot("2015323878:AAEng0bPfJuAAOAPKgcuhrSDo-K0Jqh24fA")
+bot = TelegramBot("BOT_TOKEN")
 dp = bot.dispatcher
 
 dp.add_default_exception_handler()
